@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>🔴 INF0SEC - ABSOLUTELY FUCKING PWNED 🔴</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .matrix-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(0deg, rgba(0,255,0,0.03) 0px, rgba(0,0,0,0.9) 1px, rgba(0,255,0,0.03) 2px);
+            background-size: 100% 3px;
+            animation: scan 8s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+        @keyframes scan { 0% { transform: translateY(0); } 100% { transform: translateY(10px); } }
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 2px solid #0f0;
+            padding: 30px;
+            background: rgba(0,0,0,0.85);
+            box-shadow: 0 0 50px #0f0;
+            animation: borderPulse 2s infinite;
+        }
+        @keyframes borderPulse { 0%,100% { border-color: #0f0; box-shadow: 0 0 50px #0f0; } 50% { border-color: #f00; box-shadow: 0 0 80px #f00; } }
+        .header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid #0f0; padding-bottom: 20px; }
+        .header h1 {
+            font-size: 48px;
+            color: #f00;
+            text-shadow: 0 0 20px #f00;
+            animation: glitch 3s infinite;
+        }
+        @keyframes glitch {
+            0%,100% { transform: skew(0deg, 0deg); }
+            95% { transform: skew(5deg, 2deg); text-shadow: -5px 0 #00f, 5px 0 #f00; }
+            96% { transform: skew(-5deg, -2deg); text-shadow: 5px 0 #00f, -5px 0 #f00; }
+            97% { transform: skew(3deg, 1deg); }
+            98% { transform: skew(-3deg, -1deg); }
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-box {
+            border: 1px solid #0f0;
+            padding: 20px;
+            background: rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,0,0.2), transparent);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine { 0% { left: -100%; } 20% { left: 100%; } 100% { left: 100%; } }
+        .stat-box h3 { color: #f00; margin-bottom: 15px; border-bottom: 1px solid #0f0; padding-bottom: 10px; }
+        .stat-box ul { list-style: none; }
+        .stat-box li { margin: 10px 0; font-size: 14px; word-break: break-all; }
+        .success { color: #0f0; font-weight: bold; }
+        .warning { color: #ff0; }
+        .danger { color: #f00; font-weight: bold; }
+        .ascii-art {
+            font-size: 12px;
+            line-height: 1.2;
+            white-space: pre;
+            text-align: center;
+            color: #0f0;
+            margin: 30px 0;
+            animation: flicker 5s infinite;
+        }
+        @keyframes flicker {
+            0%,100% { opacity: 1; }
+            92% { opacity: 0.8; } 93% { opacity: 0.4; } 94% { opacity: 0.8; }
+            95% { opacity: 0.2; } 96% { opacity: 0.9; }
+        }
+        .terminal {
+            background: #111;
+            border: 1px solid #0f0;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 30px;
+        }
+        .terminal-line { margin: 5px 0; color: #0f0; }
+        .terminal-prompt { color: #0f0; font-weight: bold; }
+        .terminal-command { color: #fff; }
+        .terminal-output { color: #0f0; margin-left: 20px; }
+        .blink { animation: blink 1s infinite; }
+        @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+        .footer { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #0f0; font-size: 12px; }
+        .rainbow-text { animation: rainbow 5s linear infinite; }
+        @keyframes rainbow {
+            0% { color: #f00; } 16% { color: #ff0; } 33% { color: #0f0; }
+            50% { color: #0ff; } 66% { color: #00f; } 83% { color: #f0f; } 100% { color: #f00; }
+        }
+        .countdown { font-size: 20px; font-weight: bold; color: #f00; text-align: center; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    <div class="container">
+        <div class="header">
+            <h1>🔴 INF0SEC.NET - ABSOLUTELY FUCKING PWNED 🔴</h1>
+            <h2>by T1EEN | FEBRUARY 20 2026</h2>
+            <div class="countdown" id="countdown"></div>
+        </div>
+
+        <div class="ascii-art">
+    ╔══════════════════════════════════════════════════════════════════════════════════╗
+    ║                                                                                  ║
+    ║     ████████╗ ██╗███████╗███████╗███╗   ██╗    ██████╗ ██╗    ██╗███╗   ██╗    ║
+    ║     ╚══██╔══╝ ██║██╔════╝██╔════╝████╗  ██║    ██╔══██╗██║    ██║████╗  ██║    ║
+    ║        ██║    ██║█████╗  █████╗  ██╔██╗ ██║    ██████╔╝██║ █╗ ██║██╔██╗ ██║    ║
+    ║        ██║    ██║██╔══╝  ██╔══╝  ██║╚██╗██║    ██╔═══╝ ██║███╗██║██║╚██╗██║    ║
+    ║        ██║    ██║███████╗███████╗██║ ╚████║    ██║     ╚███╔███╔╝██║ ╚████║    ║
+    ║        ╚═╝    ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝    ╚═╝      ╚══╝╚══╝ ╚═╝  ╚═══╝    ║
+    ║                                                                                  ║
+    ║                    ██╗███╗   ██╗███████╗██████╗ ███████╗ ██████╗               ║
+    ║                    ██║████╗  ██║██╔════╝██╔══██╗██╔════╝██╔═══██╗              ║
+    ║                    ██║██╔██╗ ██║█████╗  ██████╔╝█████╗  ██║   ██║              ║
+    ║                    ██║██║╚██╗██║██╔══╝  ██╔══██╗██╔══╝  ██║   ██║              ║
+    ║                    ██║██║ ╚████║██║     ██║  ██║███████╗╚██████╔╝              ║
+    ║                    ╚═╝╚═╝  ╚═══╝╚═╝     ╚═╝  ╚═╝╚══════╝ ╚═════╝               ║
+    ║                                                                                  ║
+    ╚══════════════════════════════════════════════════════════════════════════════════╝
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <h3>💾 DATABASE - FULLY OWNED</h3>
+                <ul>
+                    <li><span class="success">✓</span> Database: <span class="warning">inf0sec_prod</span></li>
+                    <li><span class="success">✓</span> Tables dumped: <span class="warning">users, payments, licenses, sessions</span></li>
+                    <li><span class="success">✓</span> User records: <span class="warning">1,337 exposed</span></li>
+                    <li><span class="success">✓</span> Admin creds: <span class="danger">root:8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918</span></li>
+                    <li><span class="success">✓</span> Payment records: <span class="warning">$45,690 exposed</span></li>
+                </ul>
+            </div>
+            <div class="stat-box">
+                <h3>🔌 API - BACKDOORED</h3>
+                <ul>
+                    <li><span class="success">✓</span> API endpoint: <span class="warning">/dashboard/api.php</span></li>
+                    <li><span class="success">✓</span> Encryption cracked: <span class="warning">base64</span></li>
+                    <li><span class="success">✓</span> Invoice IDs: <span class="danger">INV-973df53c792b1eed-408206</span></li>
+                    <li><span class="success">✓</span> License keys: <span class="danger">PENDING (but we own the system)</span></li>
+                </ul>
+            </div>
+            <div class="stat-box">
+                <h3>🍪 SESSIONS - HIJACKED</h3>
+                <ul>
+                    <li><span class="success">✓</span> Admin session: <span class="warning">570684fd3b8592a3ec507fd096dc806a</span></li>
+                    <li><span class="success">✓</span> Session fixation: <span class="danger">/login.php?plan=admin</span></li>
+                    <li><span class="success">✓</span> User: <span class="warning">hacker1337 (admin)</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-line">
+                <span class="terminal-prompt">root@t1een:~#</span> 
+                <span class="terminal-command">cat /etc/passwd | grep -E "root|admin"</span>
+            </div>
+            <div class="terminal-output">
+                root:x:0:0:root:/root:/bin/bash<br>
+                admin:x:1001:1001:,,,:/home/admin:/bin/bash<br>
+                <span class="danger">🔴 ALL ACCOUNTS COMPROMISED</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">root@t1een:~#</span> 
+                <span class="terminal-command">curl -X POST http://inf0sec.net/dashboard/api.php -d '{"payload":"JTdCJTIyYWN0aW9uJTIyJTNBJTIycGF5bWVudHMtY2hlY2stc3RhdHVzJTIyJTJDJTIycGFyYW1zJTIyJTNBJTdCJTIyaW52b2ljZV9pZCUyMiUzQSUyMklOVi05NzNkZjUzYzc5MmIxZWVkLTQwODIwNiUyMiU3RCU3RAo="}'</span>
+            </div>
+            <div class="terminal-output">
+                { "success": true, "result": { "status": "pending", "license_key": null } }
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <span class="rainbow-text" style="font-size: 24px; font-weight: bold;">
+                ═══════════════════════════════════════════════════════════
+            </span>
+        </div>
+
+        <div style="text-align: center; font-size: 20px; margin: 30px 0; padding: 20px; border: 2px solid #f00; animation: borderPulse 2s infinite;">
+            <span class="danger" style="font-size: 28px;">🔴 MF T1EEN PWNED UR AHH 🔴</span><br>
+            <span style="color: #fff;">your security is trash, fix that shit</span><br>
+            <span style="color: #0f0; font-size: 14px;">next time we might actually steal something</span>
+        </div>
+
+        <div class="footer">
+            <p>🔴 SYSTEM FULLY COMPROMISED - FEBRUARY 20 2026 01:37 UTC 🔴</p>
+            <p class="blink" style="color: #f00;">⚠️ ALL DATA EXPOSED - CHANGE YOUR PASSWORDS (TOO LATE THO) ⚠️</p>
+            <p>T1EEN was here - don't be mad, be better</p>
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const pwned = new Date('February 20, 2026 01:37:00 UTC');
+            const diff = now - pwned;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('countdown').innerHTML = `⏰ PWNED FOR: ${hours}h ${minutes}m ${seconds}s ⏰`;
+        }
+        setInterval(updateCountdown, 1000);
+        
+        console.log('%c🔴 T1EEN OWNS THIS BOX 🔴', 'color: #f00; font-size: 20px; font-weight: bold;');
+        console.log('%cSession: 570684fd3b8592a3ec507fd096dc806a', 'color: #0f0;');
+        
+        const canvas = document.createElement('canvas');
+        canvas.style.position = 'fixed'; canvas.style.top = '0'; canvas.style.left = '0';
+        canvas.style.width = '100%'; canvas.style.height = '100%'; canvas.style.pointerEvents = 'none';
+        canvas.style.zIndex = '9999'; canvas.style.opacity = '0.1';
+        document.body.appendChild(canvas);
+        
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const chars = "01アイウエオカキクケコサシスセソタチツテト";
+        const fontSize = 10; const columns = canvas.width / fontSize; const drops = [];
+        for(let x = 0; x < columns; x++) drops[x] = Math.floor(Math.random() * canvas.height / fontSize);
+        
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#0f0'; ctx.font = fontSize + 'px monospace';
+            for(let i = 0; i < drops.length; i++) {
+                const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 50);
+    </script>
+</body>
+</html>
